@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-
+const authRoutes=require('./routes/authRoutes')
 const app = express();
 const PORT = 3000;
 const JWT_SECRET = 'hitesh';
@@ -27,6 +27,7 @@ mongoose.connection.on('connected', () => {
   });
 
 app.use(bodyParser.json());
+app.use("/api/auth",authRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
