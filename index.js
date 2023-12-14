@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const authRoutes=require('./routes/authRoutes')
+const buyersRoutes=require('./routes/buyersRoutes');
+const sellersRoutes=require('./routes/sellersRoutes');
+
+
 const app = express();
 const PORT = 3000;
 const JWT_SECRET = 'hitesh';
@@ -28,6 +32,8 @@ mongoose.connection.on('connected', () => {
 
 app.use(bodyParser.json());
 app.use("/api/auth",authRoutes)
+app.use("/api/buyers",buyersRoutes)
+app.use("/api/sellers",sellersRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
